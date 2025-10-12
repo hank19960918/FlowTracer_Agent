@@ -1,0 +1,23 @@
+name: multi_demo
+workflows:
+  - name: single_step_demo
+    inputs:
+      - path: inputs/a.csv
+      - glob: inputs/b/*.csv
+    outputs:
+      - path: results/merged.csv
+    runner:
+      type: python
+      script: single_step_demo.py 
+
+  - name: second_step_demo
+    inputs:
+      - path: inputs/e.csv
+    outputs:
+      - path: results/final.csv
+    runner:
+      type: shell
+      command: >
+        python second_step_demo.py
+        --output {output0}
+        --inputs {inputs}   

@@ -1,0 +1,82 @@
+2025-10-02 20:36:33 | INFO | [logger] global logger initialized → graph_log/flow_all.log
+2025-10-02 20:36:33 | INFO | [single_step_demo] ========= WORKFLOW: single_step_demo =========
+2025-10-02 20:36:33 | INFO | [single_step_demo] [prepare_io] inputs=3 outputs=1
+2025-10-02 20:36:36 | INFO | [single_step_demo] [decide_semantic] llm.rerun=True reason=semantic changes in: inputs/a.csv, inputs/b/part1.csv, inputs/b/part2.csv
+2025-10-02 20:36:36 | INFO | [single_step_demo] [combine] final_rerun=True reason=llm: semantic changes in: inputs/a.csv, inputs/b/part1.csv, inputs/b/part2.csv
+2025-10-02 20:36:36 | INFO | [single_step_demo] [run_workflow] exec: /opt/anaconda3/envs/agent_env/bin/python single_step_demo.py --output results/merged.csv --inputs inputs/a.csv inputs/b/part1.csv inputs/b/part2.csv
+2025-10-02 20:36:37 | INFO | [single_step_demo] [bk] updated
+2025-10-02 20:36:37 | INFO | [single_step_demo] [validate] validated=False
+2025-10-02 20:36:37 | INFO | [single_step_demo] [loop] not validated, retry attempt=2
+2025-10-02 20:36:37 | INFO | [single_step_demo] [prepare_io] inputs=3 outputs=1
+2025-10-02 20:36:41 | INFO | [single_step_demo] [decide_semantic] llm.rerun=False reason=no semantic change across inputs
+2025-10-02 20:36:41 | INFO | [single_step_demo] [combine] final_rerun=False reason=
+2025-10-02 20:36:41 | INFO | [single_step_demo] [run_workflow] skipped (no rerun)
+2025-10-02 20:36:41 | INFO | [single_step_demo] [bk] updated
+2025-10-02 20:36:41 | INFO | [single_step_demo] [validate] validated=True
+2025-10-02 20:36:41 | INFO | [second_step_demo] ========= WORKFLOW: second_step_demo =========
+2025-10-02 20:36:41 | INFO | [second_step_demo] [prepare_io] inputs=1 outputs=1
+2025-10-02 20:36:43 | INFO | [second_step_demo] [decide_semantic] llm.rerun=True reason=semantic changes in: inputs/e.csv
+2025-10-02 20:36:43 | INFO | [second_step_demo] [combine] final_rerun=True reason=llm: semantic changes in: inputs/e.csv
+2025-10-02 20:36:43 | INFO | [second_step_demo] [run_workflow] exec: bash -lc 'python second_step_demo.py --output results/final.csv --inputs inputs/e.csv   '
+2025-10-02 20:36:43 | INFO | [second_step_demo] [bk] updated
+2025-10-02 20:36:43 | INFO | [second_step_demo] [validate] validated=False
+2025-10-02 20:36:43 | INFO | [second_step_demo] [loop] not validated, retry attempt=2
+2025-10-02 20:36:43 | INFO | [second_step_demo] [prepare_io] inputs=1 outputs=1
+2025-10-02 20:36:44 | INFO | [second_step_demo] [decide_semantic] llm.rerun=False reason=no semantic change across inputs
+2025-10-02 20:36:44 | INFO | [second_step_demo] [combine] final_rerun=False reason=
+2025-10-02 20:36:44 | INFO | [second_step_demo] [run_workflow] skipped (no rerun)
+2025-10-02 20:36:44 | INFO | [second_step_demo] [bk] updated
+2025-10-02 20:36:44 | INFO | [second_step_demo] [validate] validated=True
+2025-10-02 21:05:10 | INFO | [logger] global logger initialized → graph_log/flow_all.log
+2025-10-02 21:05:10 | INFO | [single_step_demo] ========= WORKFLOW: single_step_demo =========
+2025-10-02 21:05:10 | INFO | [single_step_demo] [prepare_io] inputs=3 outputs=1
+2025-10-02 21:05:14 | INFO | [single_step_demo] [decide_semantic] llm.rerun=False reason=no semantic change across inputs
+2025-10-02 21:05:14 | INFO | [single_step_demo] [combine] final_rerun=False reason=
+2025-10-02 21:05:14 | INFO | [single_step_demo] [run_workflow] skipped (no rerun)
+2025-10-02 21:05:14 | INFO | [single_step_demo] [bk] updated
+2025-10-02 21:05:14 | INFO | [single_step_demo] [validate] validated=True
+2025-10-02 21:05:14 | INFO | [second_step_demo] ========= WORKFLOW: second_step_demo =========
+2025-10-02 21:05:14 | INFO | [second_step_demo] [prepare_io] inputs=1 outputs=1
+2025-10-02 21:05:15 | INFO | [second_step_demo] [decide_semantic] llm.rerun=False reason=no semantic change across inputs
+2025-10-02 21:05:15 | INFO | [second_step_demo] [combine] final_rerun=False reason=
+2025-10-02 21:05:15 | INFO | [second_step_demo] [run_workflow] skipped (no rerun)
+2025-10-02 21:05:15 | INFO | [second_step_demo] [bk] updated
+2025-10-02 21:05:15 | INFO | [second_step_demo] [validate] validated=True
+2025-10-02 21:12:30 | INFO | [logger] global logger initialized → graph_log/flow_all.log
+2025-10-02 21:12:30 | INFO | [single_step_demo] ========= WORKFLOW: single_step_demo =========
+2025-10-02 21:12:30 | INFO | [single_step_demo] [prepare_io] inputs=3 outputs=1
+2025-10-02 21:12:34 | INFO | [single_step_demo] [decide_semantic] llm.rerun=False reason=no semantic change across inputs
+2025-10-02 21:12:34 | INFO | [single_step_demo] [rule_ts] outputs stale: min(out)=2025-10-02T20:36:36 < max(in)=2025-10-02T21:12:25
+2025-10-02 21:12:34 | INFO | [single_step_demo] [combine] final_rerun=True reason=outputs stale vs inputs
+2025-10-02 21:12:34 | INFO | [single_step_demo] [run_workflow] exec: /opt/anaconda3/envs/agent_env/bin/python single_step_demo.py --output results/merged.csv --inputs inputs/a.csv inputs/b/part1.csv inputs/b/part2.csv
+2025-10-02 21:12:34 | INFO | [single_step_demo] [bk] updated
+2025-10-02 21:12:34 | INFO | [single_step_demo] [validate] validated=False
+2025-10-02 21:12:34 | INFO | [single_step_demo] [loop] not validated, retry attempt=2
+2025-10-02 21:12:34 | INFO | [single_step_demo] [prepare_io] inputs=3 outputs=1
+2025-10-02 21:12:37 | INFO | [single_step_demo] [decide_semantic] llm.rerun=False reason=no semantic change across inputs
+2025-10-02 21:12:37 | INFO | [single_step_demo] [combine] final_rerun=False reason=
+2025-10-02 21:12:37 | INFO | [single_step_demo] [run_workflow] skipped (no rerun)
+2025-10-02 21:12:37 | INFO | [single_step_demo] [bk] updated
+2025-10-02 21:12:37 | INFO | [single_step_demo] [validate] validated=True
+2025-10-02 21:12:37 | INFO | [second_step_demo] ========= WORKFLOW: second_step_demo =========
+2025-10-02 21:12:37 | INFO | [second_step_demo] [prepare_io] inputs=1 outputs=1
+2025-10-02 21:12:38 | INFO | [second_step_demo] [decide_semantic] llm.rerun=False reason=no semantic change across inputs
+2025-10-02 21:12:38 | INFO | [second_step_demo] [combine] final_rerun=False reason=
+2025-10-02 21:12:38 | INFO | [second_step_demo] [run_workflow] skipped (no rerun)
+2025-10-02 21:12:38 | INFO | [second_step_demo] [bk] updated
+2025-10-02 21:12:38 | INFO | [second_step_demo] [validate] validated=True
+2025-10-02 21:41:08 | INFO | [logger] global logger initialized → graph_log/flow_all.log
+2025-10-02 21:41:08 | INFO | [single_step_demo] ========= WORKFLOW: single_step_demo =========
+2025-10-02 21:41:08 | INFO | [single_step_demo] [prepare_io] inputs=3 outputs=1
+2025-10-02 21:41:13 | INFO | [single_step_demo] [decide_semantic] llm.rerun=False reason=no semantic change across inputs
+2025-10-02 21:41:13 | INFO | [single_step_demo] [combine] final_rerun=False reason=
+2025-10-02 21:41:13 | INFO | [single_step_demo] [run_workflow] skipped (no rerun)
+2025-10-02 21:41:13 | INFO | [single_step_demo] [bk] updated
+2025-10-02 21:41:13 | INFO | [single_step_demo] [validate] validated=True
+2025-10-02 21:41:13 | INFO | [second_step_demo] ========= WORKFLOW: second_step_demo =========
+2025-10-02 21:41:13 | INFO | [second_step_demo] [prepare_io] inputs=1 outputs=1
+2025-10-02 21:41:15 | INFO | [second_step_demo] [decide_semantic] llm.rerun=False reason=no semantic change across inputs
+2025-10-02 21:41:15 | INFO | [second_step_demo] [combine] final_rerun=False reason=
+2025-10-02 21:41:15 | INFO | [second_step_demo] [run_workflow] skipped (no rerun)
+2025-10-02 21:41:15 | INFO | [second_step_demo] [bk] updated
+2025-10-02 21:41:15 | INFO | [second_step_demo] [validate] validated=True
