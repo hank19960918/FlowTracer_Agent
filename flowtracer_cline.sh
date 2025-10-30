@@ -1,15 +1,12 @@
 #!/usr/bin/env bash
 
-# 避免 pager 卡住
-export PAGER=cat
-export LESS='-FIRX'
-export TERM=dumb NO_COLOR=1 CI=1
-
+#### get input file
 INPUT_FILE="${1:-input_file}"
 [[ -f "$INPUT_FILE" ]] || { echo "❌ file not found: $INPUT_FILE"; exit 1; }
 
 PROMPT_CONTENT="$(cat "$INPUT_FILE")"
 
+#### define workflow policy
 POLICY="$(cat <<'EOF'
 System instruction:
 - You are a **Flow Validation Agent** inside a build orchestration system.
@@ -22,7 +19,9 @@ System instruction:
 - If the output folder is not created, create it as results folder. 
 - Put all the workflow outputs into the results folder.
 - Output the result as result.rpt to explain the reason why the workflow should be rerun or not.
-- Never modify the input.yaml file.
+- Never modify the input.yaml file and input files in input_data folder.
+- Never modify the workflow script.  
+- Ensure all output files are correctly generated and placed in the results folder.
 EOF
 )"
 
@@ -31,9 +30,11 @@ FULL_MSG="${POLICY}
 
 ${PROMPT_CONTENT}"
 
+#### clean cline instance and start new one
 echo "==> Cleaning up"
 cline instance kill -a || true
 
+#### cline execution
 echo "==> Starting instance"
 cline -o "$FULL_MSG"
 
